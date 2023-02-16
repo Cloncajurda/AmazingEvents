@@ -1,3 +1,8 @@
+body{
+  position: relative;
+  justify-content: center;
+}
+
 .carousel-item {
     position: relative;
     height: 5vh;
@@ -10,18 +15,9 @@
     color: rgb(148, 132, 252);
 }
 
-.carousel-caption {
-  position: absolute; 
-  top: 15px;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-  background-color: none; 
-}
-
-.d-block{
-    opacity: 0.1;  
+.card img{
+  height: 180px;
+  object-fit: cover;
 }
 
 .galeria{
@@ -48,33 +44,33 @@
 }
 
 table{
-  border-collapse: collapse;
-  border: solid gray 1px;
-  margin-top: 5em;
+  position: relative;
+  border: 1px solid gray;
+  margin: 5em;
 }
 td, th, tr{
-  border: rgb(4, 4, 4) 2px solid;
+  border: 2px solid rgb(191, 191, 191) !important;
 }
 .text-center{
   margin: 1em 0em;
 }
 
-.pagination{
-  margin: 2em 0em;
-  display: inline-block;
-
-}
 .page-item{
   margin: 1em;
 }
+
 .SubPagination{
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-left: 10em;
 
 }
 .formulario{
   position: relative;
-  width: 50%;
+  margin: 5em 12em;
+}
+.form-group{
+  margin: 1em;
 }

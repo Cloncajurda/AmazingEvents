@@ -64,9 +64,10 @@ td, th, tr{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-left: 10em;
-
+  border: solid 0.5px rgb(193, 192, 192);
+  height: 4em;
 }
+
 .formulario{
   position: relative;
   margin: 5em 12em;

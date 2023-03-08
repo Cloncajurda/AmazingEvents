@@ -70,7 +70,7 @@ function Search(categories,textoIngresado){
 
 
 let inputBusqueda=document.getElementById("search");
-    document.querySelector("#form-busqueda").onsubmit = (e)=> {
+    document.querySelector("#form-inline").onsubmit = (e)=> {
         e.preventDefault();
      let HTMLresultados = "";
      let CategoriasCheck = [];

@@ -75,3 +75,55 @@ td, th, tr{
 .form-group{
   margin: 1em;
 }
+
+.form-inline {
+  position: relative;
+  width: 271px;
+}
+
+.input-icon {
+  color: #191919;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar-light {
+  justify-content: center;
+  padding-left: 5em;
+}
+
+.detalle {
+  flex-direction: row;
+  align-items: center;
+}
+.detalle-title {
+  font-weight: bold;
+}
+.detalle img {
+  width: 30%;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+@media only screen and (max-width: 768px) {
+  .detalle a {
+    display: none;
+  }
+  .detalle-body {
+    padding: 0.5em 1.2em;
+  }
+  .detalle-body .detalle-text {
+    margin: 0;
+  }
+  .detalle img {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .detalle img {
+    width: 40%;
+  }
+}

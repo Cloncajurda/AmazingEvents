@@ -1,6 +1,6 @@
 let upcomingEvents= "";
 let cardContainer= document.getElementById("card")
-
+let upcomingeventslist=[];
 
 for  (let event of data.events) {
     let currentDate = new Date(data.currentDate)

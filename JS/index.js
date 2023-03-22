@@ -68,6 +68,27 @@ function Search(categories,textoIngresado){
     return HTMLresultados;
 }
 
+let itemsCheckboxes = document.querySelectorAll(".form-check-input");
+console.log(itemsCheckboxes);
+
+itemsCheckboxes.forEach(checkbox => checkbox.onchange = () =>{
+    let HTMLresultados = "";
+    let CategoriasCheck = [];
+    itemsCheckboxes.forEach(checkbox => {
+        if(checkbox.checked ){
+            CategoriasCheck.push(checkbox.value);  
+        }
+    });
+
+    console.log(CategoriasCheck);
+
+    let textoingresado = inputBusqueda.value.toLowerCase().trim();
+    HTMLresultados = Busqueda(CategoriasCheck,textoingresado)
+
+
+    document.querySelector('div.events').innerHTML = HTMLresultados; 
+    
+  }  );
 
 let inputBusqueda=document.getElementById("search");
     document.querySelector("#form-inline").onsubmit = (e)=> {

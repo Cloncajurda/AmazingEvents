@@ -5,7 +5,13 @@ let htmlEvents = "";
 let cardContainer = document.getElementById("card")
 
 for (let event of data.events){
+
+    let currentDate= new Date(data.currentDate);
+    let eventDate = new Date(event.date);
+
+    if (eventDate>currentDate||eventDate<currentDate){
     htmlEvents += createCard(event);
+    }
 }
 cardContainer.innerHTML =htmlEvents;
 
@@ -15,7 +21,6 @@ cardContainer.innerHTML =htmlEvents;
 
 let checkbox = document.getElementById("checkbox");
 let HTMLresultados = "";
-let busqueda=[];
 
 for(let category of categories){
     HTMLresultados += createCheckbox(category);
@@ -31,9 +36,9 @@ itemsCheckBoxes.forEach(checkbox => checkbox.onchange = () =>{
     let HTMLresultados = "";
     let checkCategories = [];
     itemsCheckBoxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                checkCategories.push(checkbox.value);
-            }
+        if (checkbox.checked) {
+            checkCategories.push(checkbox.value);
+        }
         });
     console.log(checkCategories);
 
@@ -60,10 +65,30 @@ function Search(categories,textoIngresado){
         (event =>event.name.toLowerCase().includes(textoIngresado) || event.description.toLowerCase().includes
         (textoIngresado)).forEach(event =>{HTMLresultados += createCard(event)});
       
-        console.log(HTMLresultados);
-    }else if(categories.length==0 && busqueda.length == 0){
+        if(HTMLresultados == ""){
+            HTMLresultados += `<div class="card"><h2>No hay resultados para esta búsqueda.</h2></div>";`
+
+        };
+
+    }else if(categories.length==0 && textoIngresado !== ""){
+        data.events.filter(event =>event.name.toLowerCase().includes(textoIngresado) || event.description.toLowerCase().includes(textoIngresado)).forEach(event =>
+       
+            {HTMLresultados += createCard(event)});
+
+            if(HTMLresultados == ""){
+                HTMLresultados += `<div class="card><h2>No hay resultados para esta búsqueda.</h2></div>";`
+    
+            };
+
+    }else if(categories.length==0 && textoIngresado == ""){
         data.events.forEach(event =>
         {HTMLresultados += createCard(event)});
+
+        if(HTMLresultados == ""){
+            HTMLresultados += `<div class="card"><h2>No hay resultados para esta búsqueda.</h2></div>";`
+    
+        };
+
     }
     return HTMLresultados;
 }
@@ -73,17 +98,17 @@ console.log(itemsCheckboxes);
 
 itemsCheckboxes.forEach(checkbox => checkbox.onchange = () =>{
     let HTMLresultados = "";
-    let CategoriasCheck = [];
+    let checkCategories = [];
     itemsCheckboxes.forEach(checkbox => {
         if(checkbox.checked ){
-            CategoriasCheck.push(checkbox.value);  
+            checkCategories.push(checkbox.value);  
         }
     });
 
-    console.log(CategoriasCheck);
+    console.log(checkCategories);
 
     let textoingresado = inputBusqueda.value.toLowerCase().trim();
-    HTMLresultados = Busqueda(CategoriasCheck,textoingresado)
+    HTMLresultados = Busqueda(checkCategories,textoingresado)
 
 
     document.querySelector('div.events').innerHTML = HTMLresultados; 
@@ -91,7 +116,8 @@ itemsCheckboxes.forEach(checkbox => checkbox.onchange = () =>{
   }  );
 
 let inputBusqueda=document.getElementById("search");
-    document.querySelector("#form-inline").onsubmit = (e)=> {
+
+    document.querySelector("#form-busqueda").onsubmit = (e)=> {
         e.preventDefault();
      let HTMLresultados = "";
      let CategoriasCheck = [];

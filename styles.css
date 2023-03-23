@@ -68,6 +68,30 @@ td, th, tr{
   height: 4em;
 }
 
+.controles{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  align-items: center;
+  background-color: rgb(193, 192, 192));   
+}
+
+.search{
+  display: flex;
+}
+
+#search{
+  width: 300px !important;
+}
+
+.btn{
+  color:black;
+}
+
+.form-control{
+  max-width: 100%;
+}
+
 .formulario{
   position: relative;
   margin: 5em 12em;

@@ -8,6 +8,7 @@ for  (let event of data.events) {
     
     if (eventDate> currentDate) {
         upcomingEvents += createCard(event)
+        upcomingeventslist.push(event);
     }
 }
 cardContainer.innerHTML= upcomingEvents;
@@ -36,10 +37,10 @@ itemsCheckBoxes.forEach(checkbox => checkbox.onchange = () =>{
     let HTMLresultados = "";
     let checkCategories = [];
     itemsCheckBoxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                checkCategories.push(checkbox.value);
-            }
-        });
+        if (checkbox.checked) {
+            checkCategories.push(checkbox.value);
+        }
+    });
     console.log(checkCategories);
 
     let textoIngresado = inputBusqueda.value.toLowerCase().trim();
@@ -54,27 +55,48 @@ function Search(categories,textoIngresado){
     
     //Filtro por checkbox sin busqueda
     if(categories.length>0 && textoIngresado == ""){ 
-        data.events.filter(event => categories.includes(event.category)).forEach(event =>
+        upcomingeventslist.filter(event => categories.includes(event.category)).forEach(event =>
             {HTMLresultados += createCard(event)});
       
             console.log(HTMLresultados);
       
     //Checkeo la categoría y luego busco
     }else if(categories.length>0 && textoIngresado != ""){ 
-       data.events.filter(event => categories.includes(event.category)).filter
+        upcomingeventslist.filter(event => categories.includes(event.category)).filter
         (event =>event.name.toLowerCase().includes(textoIngresado) || event.description.toLowerCase().includes
         (textoIngresado)).forEach(event =>{HTMLresultados += createCard(event)});
       
-        console.log(HTMLresultados);
+        if(HTMLresultados == ""){
+            HTMLresultados += `<div class="card"><h2>No hay resultados para esta búsqueda.</h2></div>";`
+
+        };
+      
+    }else if(categories.length==0 && textoIngresado !== ""){
+        upcomingeventslist.filter(event =>event.name.toLowerCase().includes(textoIngresado) || event.description.toLowerCase().includes(textoIngresado)).forEach(event =>
+       
+            {HTMLresultados += createCard(event)});
+
+            if(HTMLresultados == ""){
+                HTMLresultados += `<div class="card"><h2>No hay resultados para esta búsqueda.</h2></div>";`
+    
+            };
+
+
     }else if(categories.length==0 && busqueda.length == 0){
-        data.events.forEach(event =>
+        upcomingeventslist.forEach(event =>
         {HTMLresultados += createCard(event)});
+
+        if(HTMLresultados == ""){
+            HTMLresultados += `<div class="card"><h2>No hay resultados para esta búsqueda.</h2></div>";`
+
+        };
     }
     return HTMLresultados;
 }
 
 
 let inputBusqueda=document.getElementById("search");
+
     document.querySelector("#form-busqueda").onsubmit = (e)=> {
         e.preventDefault();
      let HTMLresultados = "";

@@ -38,17 +38,29 @@
     </div>
   </div>
 
-  <div class="navbar navbar-light bg-light justify-content-between">
-    <div class="navbar navbar-light bg-light justify-content-between listaCat" id="checkbox">
-    
+  <div class="container-fluid"  id="controles">
+    <div class="navbar form-check form-check-inline checkboxes" >
 
+      <div class="search col-sm-5 col-xl-8" id="checkbox">
 
-      <div class="search">
-        <form class="form-inline" role="search" id="buscar">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-  
-          <button class="btn" type="submit">
-            <i>&#128269;</i>
+      </div>
+
+      <div class="search" >
+        <form class="d-flex form-check form-check-inline" role="search" id="form-busqueda">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+          <button class="btn form-control mr-sm-2" type="submit">
+            <svg
+             xmlns="http://www.w3.org/2000/svg"
+             class="input-icon"
+             viewBox="0 0 20 20"
+             fill="currentColor"
+            >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"
+            />
+            </svg>
           </button>
         </form>
       </div>

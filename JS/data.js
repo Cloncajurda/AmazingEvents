@@ -19,12 +19,14 @@ console.log(data);
 // Creación de la card Dinamica
 
 function createCard(event) {
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card"  style="width: 18rem;">
     <img src="${event.image}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${event.name}</h5>
+            <h5 class="card-title">Event Nr. ${event._id}</h5>
             <p class="${event.description}">${event.description}</p>
-            <a href="" class="btn btn-primary">${event.date}</a>
+            <p>Price: US$ ${event.price}</p>
+            <a href="./details.html?id=${event._id}" class="btn  btn-outline-secondary ">Ver más..</a>
         </div>
     </div>`
 
@@ -44,7 +46,7 @@ console.log(categories);
 
 function createCheckbox(category) {
   return `<div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1${category}" value="${category}option1">
-      <label class="form-check-label" for="inlineCheckbox1${category}">${category}</label>
-  </div>`
+      <input class="form-check-input" type="checkbox" id="Checkbox${category}" value="${category}" name="category">
+      <label class="form-check-label" for="checkbox${category}">${category}</label>
+  </div>`;
 }
